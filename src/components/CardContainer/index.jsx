@@ -21,7 +21,7 @@ export default function CardComponent() {
                 </Container>
 
                 <Container className={classes.footerContainer} >
-                    <TextField id="filled-basic" label="Usuário/Repo" variant="outlined" className={classes.textTitle} />
+                    <TextField id="filled-basic" label="Usuário/Repo" variant="outlined" className={classes.inputText} />
                     <Button variant="contained" className={classes.btnAdd}>Add</Button>
                 </Container>
 

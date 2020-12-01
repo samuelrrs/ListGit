@@ -30,11 +30,15 @@ const useStyles = makeStyles({
     width: "53,3px",
   },
   btnAdd: {
-    height: "45px",
+    height: "55px",
     width: "83px",
     backgroundColor: "#8245BF",
     fontSize: "18px",
     color: "#fff",
+  },
+  inputText: {
+    height: "55px",
+    width: "300px",
   },
   footerContainer: {
     display: "flex",
