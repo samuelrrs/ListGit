@@ -33,7 +33,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingTop: "15px",
+    paddingTop: "10px",
   },
   cardInfo1: {
     height: "55px",

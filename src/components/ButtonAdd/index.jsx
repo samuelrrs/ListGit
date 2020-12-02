@@ -7,7 +7,7 @@ export default function ButtonAdd() {
     const classes = useStyles();
     return (
 
-        <Button variant="contained" className={classes.btnAdd} >
+        <Button className={classes.btnAdd} >
             Add
         </Button>
 

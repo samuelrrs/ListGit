@@ -7,6 +7,7 @@ const useStyles = makeStyles({
         backgroundColor: "#8245BF",
         fontSize: "18px",
         color: "#fff",
+        fontVariant:"contained" 
       },
 });
 export default useStyles;
