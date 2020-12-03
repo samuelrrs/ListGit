@@ -26,8 +26,8 @@ Em seguida abra no seu editor de código
 ```
 Rode o comando : YARN ou NPM INSTALL
 ```
-Para executar basta rodar o comando : yarn start ou npm run
-```
+### Para executar basta rodar o comando : yarn start ou npm run
+
 
 ## 🛠️ Construído com
 
