@@ -1,14 +1,12 @@
-import './App.css';
-import CardComponent from './components/CardContainer/index';
-import CardList from './components/CardList/index';
-
+import Routes from "./routes";
+import GlobalStyle from "./styles/global";
 
 function App() {
   return (
-    <div className="App">      
-      <CardComponent/>
-      <CardList/>
-    </div>
+    <>
+      <GlobalStyle />
+      <Routes />
+    </>
   );
 }
 
