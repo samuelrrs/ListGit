@@ -1,6 +1,7 @@
 # ListGit
 
-Adicione os repositórios consultado na API GITHUB, utilizando o React JS, juntamente com Material UI.
+Lista os repositórios do GITHUB checando se ele existe ou não, feito com ReactJS, juntamente com Material UI.
+
 
 ## 🚀 Começando
 
