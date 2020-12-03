@@ -2,7 +2,7 @@ import React from 'react'
 
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Main from './pages/Main/index';
-import Repositorio from './Repositorio/index';
+import Repositorio from './pages/Repositorio/index';
 
 export default function Routes () {
     return (
