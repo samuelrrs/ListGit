@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { FaGithub, FaPlus, FaSpinner, FaBars, FaTrash } from 'react-icons/fa'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Container, Form, SubmitButton, List, DeleteButton } from './styles'
 
 import api from '../../services/api'
@@ -36,6 +36,7 @@ export default function Main() {
             try {
 
                 if (newRepo === '') {
+                   
                     throw new Error('O campo não pode ser em branco')
                 }
 
@@ -84,7 +85,7 @@ export default function Main() {
         <Container>
             <h1>
                 <FaGithub />
-                Meus repositorios</h1>
+                Repositorios</h1>
 
             <Form onSubmit={handleSubmit} error={alert}>
 
@@ -93,7 +94,7 @@ export default function Main() {
                     placeholder="Add repositorios"
                     value={newRepo}
                     onChange={handleinputChange}
-                />
+                /> 
 
                 <SubmitButton loading={loading ? 1 : 0}>
                     {loading ? (
