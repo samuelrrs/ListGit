@@ -44,4 +44,4 @@ Rodar o comando : yarn start ou npm run
 * **Desenvolvedor** - [Samuel Ribeiro](https://github.com/samuelrrs)
 
 ---
-⌨️ com ❤️ por [Samuel Ribeiro](https://github.com/samuelrrs) 😊
+⌨️ por [Samuel Ribeiro](https://github.com/samuelrrs) 🚀
