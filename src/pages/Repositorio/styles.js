@@ -47,3 +47,5 @@ export const Loading = styled.div`
   align-items: center;
   height: 100vh;
 `;
+
+export const IssuesList = styled.ul``;
