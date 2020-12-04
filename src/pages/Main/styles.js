@@ -9,7 +9,7 @@ export const Container = styled.div`
   margin: 80px auto;
 
   h1 {
-    font-size: 20px;
+    font-size: 40px;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -30,7 +30,7 @@ export const Form = styled.form`
     padding: 10px 15px;
     border-radius: 14px;
     font-size: 17px;
-  }
+  } 
 `;
 export const SubmitButton = styled.button.attrs((props) => ({
   type: "submit",
