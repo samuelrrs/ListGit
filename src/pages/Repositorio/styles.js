@@ -62,8 +62,8 @@ export const IssuesList = styled.ul`
     padding: 15px 10px;
 
     img {
-      width: 36px;
-      height: 36px;
+      width: 37px;
+      height: 37px;
       border-radius: 50%;
       border: 2px solid #0d2636;
     }
