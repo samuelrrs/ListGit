@@ -10,10 +10,9 @@ export default function Main() {
     return (
         <Container>
             <h1>
-                <FaGithub />
-                Repositorios</h1>
-
-
+                   <FaGithub />
+                   Repositorios
+            </h1>
             <ContainerFormRepo />
         </Container>
     )

@@ -5,6 +5,9 @@ import InputRepo from './../../Components/InputRepo/index';
 import ButtonDefault from '../../Components/ButtonDefault';
 import ListRepo from './../../Components/ListRepo/index';
 import ItemList from '../../Components/ItemList';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import useStyles from './styles';
+import Container from '@material-ui/core/Container';
 
 export default function ContainerFormRepo() {
 
@@ -79,26 +82,32 @@ export default function ContainerFormRepo() {
     }, [repositorios])
 
 
+    const styles = useStyles()
+
     return (
         <>
-            <FormDefault
-                onSubmit={handleSubmit}
-                contentForm={
-                    <>
-                        <InputRepo
-                            type={'text'}
-                            label={'Digite usuário/repositório'}
-                            value={newRepo}
-                            onChange={handleinputChange}
-                        />
-                        <ButtonDefault
-                            color={'primary'}
-                            type={'submit'} />
-                    </>
-                }
-            />
 
-            <ListRepo
+                <FormDefault className={styles.container}
+                    onSubmit={handleSubmit}
+                    contentForm={
+                        <>
+                            <InputRepo
+
+                                type={'text'}
+                                label={'Digite usuário/repositório'}
+                                value={newRepo}
+                                onChange={handleinputChange}
+                            />
+
+                            <ButtonDefault
+                                color={'primary'}
+                                type={'submit'}>
+                                <AddCircleOutlineIcon />
+                            </ButtonDefault>
+                        </>
+                    }
+                />
+            <ListRepo className={styles.list}
                 itemList={
                     <>
                         {
