@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
-import { Container, Owner, Loading, BackButton, IssuesList } from './styles';
+import { Container, Owner, Loading, BackButton, /* IssuesList */ } from './styles';
 import { FaArrowLeft } from 'react-icons/fa'
-
+import Typography from '@material-ui/core/Typography';
+import AutorenewIcon from '@material-ui/icons/Autorenew';
 
 export default function Repositorio({ match }) {
     const [repositorio, setRepositorio] = useState({});
-    const [issues, setIssues] = useState([])
+  /*   const [issues, setIssues] = useState([]) */
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -14,17 +15,16 @@ export default function Repositorio({ match }) {
             const nomeRepo = decodeURIComponent(match.params.repositorio)
 
 
-            const [repositorioData, issuesData] = await Promise.all([
+            const [repositorioData] = await Promise.all([
                 api.get(`/repos/${nomeRepo}`),
-                api.get(`/repos/${nomeRepo}/issues`, {
+               /*  api.get(`/repos/${nomeRepo}/issues`, {
                     params: {
                         state: 'open',
                         per_page: 5
                     }
-                })
+                }) */
             ])
             setRepositorio(repositorioData.data)
-            setIssues(issuesData.data);
             setLoading(false)
 
         }
@@ -34,7 +34,7 @@ export default function Repositorio({ match }) {
     if (loading) {
         return (
             <Loading>
-                <h1>Carregando</h1>
+                <h1>Carregando <AutorenewIcon/> </h1>
             </Loading>
         )
     }
@@ -44,16 +44,17 @@ export default function Repositorio({ match }) {
                 <FaArrowLeft color="#b41313" size={30} />
             </BackButton>
             <Owner>
+
                 <img
                     src={repositorio.owner.avatar_url}
                     alt={repositorio.owner.login} />
-                <h1>{repositorio.name}</h1>
-                <p>{repositorio.description}</p>
-                <p>Stars : {repositorio.stargazers_count}</p>
-                <p>Language : {repositorio.language}</p>
+                <Typography>{repositorio.name}</Typography>
+                <Typography>{repositorio.description}</Typography>
+                <Typography>Stars : {repositorio.stargazers_count}</Typography>
+                <Typography>Language : {repositorio.language}</Typography>
             </Owner>
 
-            <IssuesList>
+            {/*         <IssuesList>
                 {issues.map(issue => (
                     <li key={String(issue.id)}>
                         <img src={issue.user.avatar_url} alt={issue.user.login} />
@@ -71,7 +72,7 @@ export default function Repositorio({ match }) {
 
                     </li>
                 ))}
-            </IssuesList>
+            </IssuesList> */}
         </Container>
     )
 }
