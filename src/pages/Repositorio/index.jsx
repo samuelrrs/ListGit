@@ -4,10 +4,12 @@ import { Container, Owner, Loading, BackButton, /* IssuesList */ } from './style
 import { FaArrowLeft } from 'react-icons/fa'
 import Typography from '@material-ui/core/Typography';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
+import LoadingIcon from '../../assets/images/loading.gif'
+
 
 export default function Repositorio({ match }) {
     const [repositorio, setRepositorio] = useState({});
-  /*   const [issues, setIssues] = useState([]) */
+    /*   const [issues, setIssues] = useState([]) */
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -17,12 +19,12 @@ export default function Repositorio({ match }) {
 
             const [repositorioData] = await Promise.all([
                 api.get(`/repos/${nomeRepo}`),
-               /*  api.get(`/repos/${nomeRepo}/issues`, {
-                    params: {
-                        state: 'open',
-                        per_page: 5
-                    }
-                }) */
+                /*  api.get(`/repos/${nomeRepo}/issues`, {
+                     params: {
+                         state: 'open',
+                         per_page: 5
+                     }
+                 }) */
             ])
             setRepositorio(repositorioData.data)
             setLoading(false)
@@ -34,7 +36,10 @@ export default function Repositorio({ match }) {
     if (loading) {
         return (
             <Loading>
-                <h1>Carregando <AutorenewIcon/></h1>
+                <h1>
+                    CARREGANDO
+                </h1>
+                <img src={LoadingIcon} alt="loadIcon" />
             </Loading>
         )
     }
