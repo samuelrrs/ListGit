@@ -5,13 +5,9 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: "row",
     justifyContent: 'space-between',
-  },
-  iconDelete: {
-
-  },
+  }, 
   textList: {
    marginRight: '400px'
-
   }
 }));
 

@@ -4,7 +4,6 @@ import ViewWeekIcon from '@material-ui/icons/ViewWeek';
 import { Link } from 'react-router-dom';
 import useStyles from './../ItemList/styles';
 import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container';
 import ListItem from '@material-ui/core/ListItem';
 export default function ItemList({ name, handleDelete, onClickDelete, linkTo }) {
 
