@@ -1,18 +1,21 @@
 import React from 'react'
 import { FaGithub } from 'react-icons/fa'
-import { Container} from './styles'
 
 import ContainerFormRepo from './../../Container/ContainerFormRepo/index';
-
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import useStyles from './styles';
 export default function Main() {
 
+    const styles = useStyles()
 
     return (
-        <Container>
-            <h1>
-                   <FaGithub />
+        <Container className={styles.container}>
+            <Typography className={styles.title}>
+                <GitHubIcon className={styles.icon} />
                    Repositorios
-            </h1>
+            </Typography>
             <ContainerFormRepo />
         </Container>
     )
