@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
 import { Container, Owner, Loading, BackButton, IssuesList } from './styles';
 import { FaArrowLeft } from 'react-icons/fa'
-
+import RotateLeftIcon from '@material-ui/icons/RotateLeft';
 
 export default function Repositorio({ match }) {
     const [repositorio, setRepositorio] = useState({});
@@ -34,7 +34,7 @@ export default function Repositorio({ match }) {
     if (loading) {
         return (
             <Loading>
-                <h1>Carregando</h1>
+                <h1>Carregando <RotateLeftIcon/></h1>
             </Loading>
         )
     }
@@ -53,7 +53,7 @@ export default function Repositorio({ match }) {
                 <p>Language : {repositorio.language}</p>
             </Owner>
 
-            <IssuesList>
+          {/*   <IssuesList>
                 {issues.map(issue => (
                     <li key={String(issue.id)}>
                         <img src={issue.user.avatar_url} alt={issue.user.login} />
@@ -71,7 +71,7 @@ export default function Repositorio({ match }) {
 
                     </li>
                 ))}
-            </IssuesList>
+            </IssuesList> */}
         </Container>
     )
 }
