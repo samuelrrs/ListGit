@@ -5,6 +5,7 @@ import { FaArrowLeft } from 'react-icons/fa'
 import Typography from '@material-ui/core/Typography';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import LoadingIcon from '../../assets/images/loading.gif'
+import LoadingTransition from './../../Components/LoadingTransition/index';
 
 
 export default function Repositorio({ match }) {
@@ -36,10 +37,14 @@ export default function Repositorio({ match }) {
     if (loading) {
         return (
             <Loading>
-                <h1>
+
+
+            <LoadingTransition/>
+
+              {/*   <h1>
                     CARREGANDO
                 </h1>
-                <img src={LoadingIcon} alt="loadIcon" />
+                <img src={LoadingIcon} alt="loadIcon" /> */}
             </Loading>
         )
     }
