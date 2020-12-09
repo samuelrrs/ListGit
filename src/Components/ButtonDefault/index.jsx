@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import useStyles from './../ButtonDefault/styles';
 
