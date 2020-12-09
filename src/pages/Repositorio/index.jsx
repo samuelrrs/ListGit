@@ -34,7 +34,7 @@ export default function Repositorio({ match }) {
     if (loading) {
         return (
             <Loading>
-                <h1>Carregando <AutorenewIcon/> </h1>
+                <h1>Carregando <AutorenewIcon/></h1>
             </Loading>
         )
     }
