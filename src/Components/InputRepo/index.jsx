@@ -15,6 +15,7 @@ export default function InputRepo( {label, value, onChange, type}) {
                 variant="outlined"
                 value={value}
                 onChange={onChange}
+                required={true}
             />
         </>
     )
