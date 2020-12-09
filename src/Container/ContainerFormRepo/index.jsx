@@ -7,8 +7,7 @@ import ListRepo from './../../Components/ListRepo/index';
 import ItemList from '../../Components/ItemList';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import useStyles from './styles';
-import Container from '@material-ui/core/Container';
-
+import LoopOutlinedIcon from '@material-ui/icons/LoopOutlined';
 export default function ContainerFormRepo() {
 
     const [newRepo, setNewRepo] = useState('');
@@ -87,32 +86,39 @@ export default function ContainerFormRepo() {
     return (
         <>
 
-                <FormDefault className={styles.container}
-                    onSubmit={handleSubmit}
-                    contentForm={
-                        <>
-                            <InputRepo
+            <FormDefault className={styles.container}
+                onSubmit={handleSubmit}
+                error={alert}
+                contentForm={
+                    <>
+                        <InputRepo
 
-                                type={'text'}
-                                label={'Digite usuário/repositório'}
-                                value={newRepo}
-                                onChange={handleinputChange}
-                            />
+                            type={'text'}
+                            label={'Digite usuário/repositório'}
+                            value={newRepo}
+                            onChange={handleinputChange}
+                        />
 
-                            <ButtonDefault
-                                color={'primary'}
-                                type={'submit'}>
-                                <AddCircleOutlineIcon />
-                            </ButtonDefault>
-                        </>
-                    }
-                />
+                        <ButtonDefault
+                            color={'primary'}
+                            type={'submit'}>
+
+                            {loading ? (
+                                <LoopOutlinedIcon />
+                            ) : (<AddCircleOutlineIcon />)
+
+                            }
+                        </ButtonDefault>
+                    </>
+                }
+            />
             <ListRepo className={styles.list}
                 itemList={
                     <>
                         {
                             repositorios.map(repo => (
                                 <ItemList
+                                    key={repo.name}
                                     name={repo.name}
                                     onClickDelete={() => { handleDelete(repo.name) }}
                                     linkTo={`/repositorio/${encodeURIComponent(repo.name)}`}

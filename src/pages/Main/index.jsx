@@ -1,5 +1,4 @@
 import React from 'react'
-import { FaGithub } from 'react-icons/fa'
 
 import ContainerFormRepo from './../../Container/ContainerFormRepo/index';
 import Container from '@material-ui/core/Container';
