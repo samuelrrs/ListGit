@@ -53,7 +53,7 @@ export default function Repositorio({ match }) {
                 <p>Language : {repositorio.language}</p>
             </Owner>
 
-            <IssuesList>
+          {/*   <IssuesList>
                 {issues.map(issue => (
                     <li key={String(issue.id)}>
                         <img src={issue.user.avatar_url} alt={issue.user.login} />
@@ -71,7 +71,7 @@ export default function Repositorio({ match }) {
 
                     </li>
                 ))}
-            </IssuesList>
+            </IssuesList> */}
         </Container>
     )
 }
