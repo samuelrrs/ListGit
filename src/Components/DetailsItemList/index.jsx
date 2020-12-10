@@ -2,7 +2,7 @@ import React from 'react'
 import useStyles from './styles';
 import Typography from '@material-ui/core/Typography'
 import ListItem from '@material-ui/core/ListItem';
-export default function ItemList({ name, desc, stars, language, avatar, alt }) {
+export default function DetailsItemList({ name, desc, stars, language, avatar, alt }) {
 
     const styles = useStyles()
     return (
