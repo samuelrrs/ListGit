@@ -8,8 +8,10 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
   },
   img: {
-    height: "25px",
-    width: "25px",
+    height: "70px",
+  },
+  text: {
+    fontSize: '35px'
   },
 }));
 
