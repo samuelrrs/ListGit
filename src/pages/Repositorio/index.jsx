@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
 import { Container, Owner, Loading, BackButton, /* IssuesList */ } from './styles';
 import { FaArrowLeft } from 'react-icons/fa'
-import Typography from '@material-ui/core/Typography';
-import AutorenewIcon from '@material-ui/icons/Autorenew';
-import LoadingIcon from '../../assets/images/loading.gif'
 import LoadingTransition from './../../Components/LoadingTransition/index';
+import ItemList from '../../Components/DetailsItemList';
 
 
 export default function Repositorio({ match }) {
@@ -37,14 +35,7 @@ export default function Repositorio({ match }) {
     if (loading) {
         return (
             <Loading>
-
-
-            <LoadingTransition/>
-
-              {/*   <h1>
-                    CARREGANDO
-                </h1>
-                <img src={LoadingIcon} alt="loadIcon" /> */}
+                <LoadingTransition />
             </Loading>
         )
     }
@@ -55,13 +46,24 @@ export default function Repositorio({ match }) {
             </BackButton>
             <Owner>
 
+                <ItemList
+                    key={repositorio.name}
+                    avatar={repositorio.owner.avatar_url}
+                    alt={repositorio.owner.login}
+                    name={repositorio.name}
+                    desc={repositorio.description}
+                    stars={repositorio.stargazers_count}
+                    language={repositorio.language}
+                />
+
+                {/*   
                 <img
                     src={repositorio.owner.avatar_url}
                     alt={repositorio.owner.login} />
                 <Typography>{repositorio.name}</Typography>
                 <Typography>{repositorio.description}</Typography>
                 <Typography>Stars : {repositorio.stargazers_count}</Typography>
-                <Typography>Language : {repositorio.language}</Typography>
+                <Typography>Language : {repositorio.language}</Typography> */}
             </Owner>
 
             {/*         <IssuesList>
