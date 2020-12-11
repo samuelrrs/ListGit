@@ -2,7 +2,7 @@ import Container from '@material-ui/core/Container';
 import React from 'react'
 import LoadingAnimation from '../../assets/images/image.gif'
 import useStyles from './styles';
-import  Typography  from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography';
 
 
 export default function LoadingTransition() {

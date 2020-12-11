@@ -1,20 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
-import { Container, Owner, Loading, BackButton, /* IssuesList */ } from './styles';
+import { Owner, Loading, BackButton, /* IssuesList */ } from './styles';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import LoadingTransition from './../../Components/LoadingTransition/index';
-import DetailsItemList from '../../Components/DetailsItemList';
+import DetailsItemList from '../../Components/CardHeader';
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
+import { Container } from '@material-ui/core';
+import useStyles from './styles';
+import CardHead from './../../Components/CardHeader/index';
+import CardPrincipal from './../../Components/CardPrincipal/index';
+import CardImage from './../../Components/CardMedia/index';
+import CardConteudo from './../../Components/CardContent/index';
+import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+
 
 export default function ContainerDetailsRepo() {
     const pathname = window.location.pathname.replace('/repositorio', '')
     const [repositorio, setRepositorio] = useState({});
     const [loading, setLoading] = useState(true)
+    const styles = useStyles()
 
     useEffect(() => {
         async function load() {
             const nomeRepo = decodeURIComponent(pathname)
             const [repositorioData] = await Promise.all([
-                api.get(`/repos${nomeRepo}`),               
+                api.get(`/repos${nomeRepo}`),
             ])
             setRepositorio(repositorioData.data)
             setLoading(false)
@@ -29,22 +41,56 @@ export default function ContainerDetailsRepo() {
             </Loading>
         )
     }
+
+
     return (
         <Container>
             <BackButton to="/">
-                <ArrowBackIcon/>
+                <ArrowBackIcon />
             </BackButton>
-            <Owner>
-                <DetailsItemList
-                    key={repositorio.name}
-                    avatar={repositorio.owner.avatar_url}
-                    alt={repositorio.owner.login}
-                    name={repositorio.name}
-                    desc={repositorio.description}
-                    stars={repositorio.stargazers_count}
-                    language={repositorio.language}
+            <Container className={styles.container}>
+                <CardPrincipal
+                    contentCard={
+                        <>
+                            <CardHead
+                                avatar={
+                                    <>
+                                        <Avatar aria-label="recipe">
+                                        </Avatar>
+                                    </>
+                                }
+                                title={repositorio.name}
+                                subheader={repositorio.language}
+                            />
+                            <CardImage
+                                ImageContent={
+                                    <>
+                                        <img src={repositorio.owner.avatar_url} alt={repositorio.owner.login} />
+                                    </>
+                                }
+                            />
+                            <CardConteudo
+                                cardDesc={
+                                    <>
+                                        <Typography>
+                                            {repositorio.description}
+                                        </Typography>
+                                        <Typography>
+                                            {repositorio.language}
+                                        </Typography>
+                                        <Typography>
+                                            {repositorio.stargazers_count}
+                                        </Typography>
+                                    </>
+                                }
+
+                            />
+                        </>
+                    }
+
                 />
-            </Owner>
+
+            </Container>
         </Container>
     )
 }

@@ -1,16 +1,17 @@
-import { Container, List } from "@material-ui/core";
-import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import { Card, Container, List } from "@material-ui/core";
+import GridList from '@material-ui/core/GridList';
 import { Typography } from '@material-ui/core/Typography';
+import useStyles from './styles';
 
 export default function DetailsList(detailsItem) {
 
+    const styles = useStyles()
     return (
 
-
         <Container>
-            <List dense={true}>
+            <Card className={styles.gridList}>
                 {detailsItem}
-            </List>
+            </Card>
 
         </Container>
 

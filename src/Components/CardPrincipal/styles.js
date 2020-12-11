@@ -1,10 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
-  container: {
-    display: 'flex',
-    alignItems: 'center'
-  }
+  principal: {
+    maxWidth: 345,
+  },
 }));
 
 export default useStyles;
