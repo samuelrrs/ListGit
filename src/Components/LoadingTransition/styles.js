@@ -6,12 +6,17 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    color: "black",
+    backgroundColor: "white",
+    height: "400px",
+    padding: "20px",
+    borderRadius: "5%",
   },
   img: {
     height: "70px",
   },
   text: {
-    fontSize: '35px'
+    fontSize: "35px" ,
   },
 }));
 
