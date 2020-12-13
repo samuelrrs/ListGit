@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
-import { Owner, Loading, BackButton, /* IssuesList */ } from './styles';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import LoadingTransition from './../../Components/LoadingTransition/index';
-import DetailsItemList from '../../Components/CardHeader';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
 import { Container } from '@material-ui/core';
 import useStyles from './styles';
 import CardHead from './../../Components/CardHeader/index';
@@ -13,7 +9,6 @@ import CardPrincipal from './../../Components/CardPrincipal/index';
 import CardImage from './../../Components/CardMedia/index';
 import CardConteudo from './../../Components/CardContent/index';
 import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import Button from '@material-ui/core/Button';
 
@@ -37,18 +32,18 @@ export default function ContainerDetailsRepo() {
 
     if (loading) {
         return (
-            <Loading>
+            <Container>
                 <LoadingTransition />
-            </Loading>
+            </Container>
         )
     }
 
 
     return (
         <Container>
-            <BackButton to="/">
+            <Button variant="contained" href="/" className={styles.backButton}>
                 <ArrowBackIcon />
-            </BackButton>
+            </Button>
             <Container className={styles.cardPrincipal}>
                 <CardPrincipal
                     contentCard={
@@ -76,13 +71,13 @@ export default function ContainerDetailsRepo() {
                                 cardDesc={
                                     <>
                                         <Typography>
-                                            {repositorio.description}
+                                            <span className={styles.tituloCard}>Descrição :</span>  {repositorio.description}
                                         </Typography>
                                         <Typography>
-                                            {repositorio.language}
+                                            <span className={styles.tituloCard}>Linguagem :</span>{repositorio.language}
                                         </Typography>
                                         <Typography>
-                                            {repositorio.stargazers_count}
+                                            <span className={styles.tituloCard}>Stars :</span> {repositorio.stargazers_count}
                                         </Typography>
                                     </>
                                 }
