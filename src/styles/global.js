@@ -6,15 +6,19 @@ export default createGlobalStyle `
     padding: 0;
     outline: 0;
     box-sizing: border-box;
+    opacity: '1';
+
 }
 
 html, body #root {
-    min-height: 100%
+    min-height: 100%;
+
 }
 body {
     background: #8245BF;
     font-size: 14px;
     -webkit-font-smoothing: antialiased !important;
+
 }
 
 
