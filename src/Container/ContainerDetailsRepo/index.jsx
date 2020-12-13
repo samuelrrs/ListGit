@@ -14,7 +14,8 @@ import CardImage from './../../Components/CardMedia/index';
 import CardConteudo from './../../Components/CardContent/index';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
-
+import RefreshIcon from '@material-ui/icons/Refresh';
+import Button from '@material-ui/core/Button';
 
 export default function ContainerDetailsRepo() {
     const pathname = window.location.pathname.replace('/repositorio', '')
@@ -48,15 +49,17 @@ export default function ContainerDetailsRepo() {
             <BackButton to="/">
                 <ArrowBackIcon />
             </BackButton>
-            <Container className={styles.container}>
+            <Container className={styles.cardPrincipal}>
                 <CardPrincipal
                     contentCard={
                         <>
                             <CardHead
                                 avatar={
                                     <>
-                                        <Avatar aria-label="recipe">
-                                        </Avatar>
+                                        <Button >
+                                            <RefreshIcon />
+                                        </Button>
+
                                     </>
                                 }
                                 title={repositorio.name}

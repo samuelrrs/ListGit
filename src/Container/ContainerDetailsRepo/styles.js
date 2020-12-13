@@ -21,6 +21,12 @@ export const Loading = styled.div`
 
 const useStyles = makeStyles((theme) => ({
  
+  cardPrincipal: {
+    display:'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection : 'column'
+  }
  
 }));
 
