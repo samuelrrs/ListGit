@@ -9,6 +9,8 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import useStyles from './styles';
 import LoopOutlinedIcon from '@material-ui/icons/LoopOutlined';
 import TipMessage from './../../Components/TipMessage/index';
+import { Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 
 
 export default function ContainerFormRepo() {
@@ -17,6 +19,8 @@ export default function ContainerFormRepo() {
     const [repositorios, setRepositorios] = useState([]);
     const [loading, setLoading] = useState(false);
     const [alert, setAlert] = useState(null);
+
+
     useEffect(() => {
         const repoStorage = localStorage.getItem('repos')
 
@@ -29,6 +33,21 @@ export default function ContainerFormRepo() {
         localStorage.setItem('repos', JSON.stringify(repositorios))
     }, [repositorios])
 
+
+    const [showAlert, setShowAlert] = useState(false);
+
+
+    const handleClose = (_, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setShowAlert(false)
+    };
+
+    function Alert(props) {
+        return <MuiAlert elevation={6} variant="filled" {...props} />;
+    }
 
     const handleSubmit = useCallback((e) => {
         e.preventDefault()
@@ -49,7 +68,9 @@ export default function ContainerFormRepo() {
 
                 if (hasRepo) {
 
-                    throw new Error('Já existe esse repostório')
+                    setShowAlert(true)
+                    throw new Error('O campo não pode ser em branco')
+
 
                 }
 
@@ -84,7 +105,9 @@ export default function ContainerFormRepo() {
     }, [repositorios])
 
 
-  
+
+
+
 
     const styles = useStyles()
 
@@ -120,9 +143,27 @@ export default function ContainerFormRepo() {
 
 
                 }
-                
+
             />
-            <TipMessage />
+            <TipMessage
+            />
+            { showAlert &&
+
+                <Snackbar
+                    open={showAlert}
+                    autoHideDuration={26000}
+                    onClose={handleClose}
+                    className={styles.tip}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'center'
+                    }}
+                >
+                    <Alert onClose={handleClose} severity="warning">
+                        Ja existe esse repo
+</Alert>
+                </Snackbar>
+            }
 
             <ListRepo className={styles.list}
                 itemList={
@@ -143,7 +184,6 @@ export default function ContainerFormRepo() {
                 }
 
             />
-
 
 
         </>
