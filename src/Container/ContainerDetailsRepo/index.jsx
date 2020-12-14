@@ -50,12 +50,15 @@ export default function ContainerDetailsRepo() {
                         <>
                             <CardHead
                                 avatar={
-                                    <>
-                                        <Button >
+                                    <Container className={styles.headCard}>
+                                        <Typography className={styles.tituloCard}> {repositorio.name}</Typography>
+                                        <Button onClick={() => {
+                                            window.location.href = window.location.href
+                                        }}>
                                             <RefreshIcon />
                                         </Button>
 
-                                    </>
+                                    </Container>
                                 }
                                 title={repositorio.name}
                                 subheader={repositorio.language}
@@ -71,13 +74,16 @@ export default function ContainerDetailsRepo() {
                                 cardDesc={
                                     <>
                                         <Typography>
-                                            <span className={styles.tituloCard}>Descrição :</span>  {repositorio.description}
+                                            <span className={styles.textoFixoCard}>Descrição :</span>  {repositorio.description}
                                         </Typography>
                                         <Typography>
-                                            <span className={styles.tituloCard}>Linguagem :</span>{repositorio.language}
+                                            <span className={styles.textoFixoCard}>Linguagem :</span>{repositorio.language}
                                         </Typography>
                                         <Typography>
-                                            <span className={styles.tituloCard}>Stars :</span> {repositorio.stargazers_count}
+                                            <span className={styles.textoFixoCard}>Stars :</span> {repositorio.stargazers_count}
+                                        </Typography>
+                                        <Typography>
+                                            <span className={styles.textoFixoCard}>Forks :</span> {repositorio.forks_count}
                                         </Typography>
                                     </>
                                 }
