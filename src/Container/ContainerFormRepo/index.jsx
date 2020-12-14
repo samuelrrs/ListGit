@@ -8,7 +8,6 @@ import ItemList from '../../Components/ItemList';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import useStyles from './styles';
 import LoopOutlinedIcon from '@material-ui/icons/LoopOutlined';
-import MuiAlert from '@material-ui/lab/Alert';
 import TipMessage from './../../Components/TipMessage/index';
 
 
@@ -85,24 +84,7 @@ export default function ContainerFormRepo() {
     }, [repositorios])
 
 
-    function Alert(props) {
-        return <MuiAlert elevation={6} variant="filled" {...props} />;
-    }
-
-    const [open, setOpen] = React.useState(true);
-
-    const handleClick = () => {
-        setOpen(true);
-    };
-
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-
-        setOpen(false);
-    };
-
+  
 
     const styles = useStyles()
 
