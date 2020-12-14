@@ -21,7 +21,15 @@ export default function CustomizedSnackbars() {
   const styles = useStyles()
 
   return (
-    <Snackbar open={open} autoHideDuration={26000} onClose={handleClose} className={styles.tip}>
+    <Snackbar
+      open={open}
+      autoHideDuration={26000}
+      onClose={handleClose}
+      className={styles.tip}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'center'
+      }}>
       <Alert onClose={handleClose} severity="info">
         Dica : facebook/react-native
         </Alert>
