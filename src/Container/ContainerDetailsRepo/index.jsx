@@ -53,7 +53,7 @@ export default function ContainerDetailsRepo() {
                                     <Container className={styles.headCard}>
                                         <Typography className={styles.tituloCard}> {repositorio.name}</Typography>
                                         <Button onClick={() => {
-                                            window.location.href = window.location.href
+                                            document.location.reload();
                                         }}>
                                             <RefreshIcon />
                                         </Button>
