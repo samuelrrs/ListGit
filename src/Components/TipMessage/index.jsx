@@ -9,7 +9,7 @@ function Alert(props) {
 export default function CustomizedSnackbars() {
   const [open, setOpen] = React.useState(true);
 
- 
+
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -21,10 +21,10 @@ export default function CustomizedSnackbars() {
   const styles = useStyles()
 
   return (
-      <Snackbar open={open} autoHideDuration={26000} onClose={handleClose} className={styles.tip}>
-        <Alert onClose={handleClose} severity="info">
-          Dica : facebook/react-native
+    <Snackbar open={open} autoHideDuration={26000} onClose={handleClose} className={styles.tip}>
+      <Alert onClose={handleClose} severity="info">
+        Dica : facebook/react-native
         </Alert>
-      </Snackbar>
+    </Snackbar>
   );
 }
