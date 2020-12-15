@@ -1,13 +1,11 @@
-import { Card, Container, List } from "@material-ui/core";
-import useStyles from './styles';
+import { Card, Container} from "@material-ui/core";
 
 export default function DetailsList(detailsItem) {
 
-    const styles = useStyles()
     return (
 
         <Container>
-            <Card className={styles.gridList}>
+            <Card>
                 {detailsItem}
             </Card>
 
