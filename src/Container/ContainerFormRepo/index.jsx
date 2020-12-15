@@ -9,9 +9,8 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import useStyles from './styles';
 import LoopOutlinedIcon from '@material-ui/icons/LoopOutlined';
 import TipMessage from './../../Components/TipMessage/index';
-import { Snackbar } from '@material-ui/core';
-import MuiAlert from '@material-ui/lab/Alert';
-
+import DuplicatedMessage from './../../Components/DuplicatedMessage/index';
+import NotExistMessage from './../../Components/NotExistMessage/index';
 
 export default function ContainerFormRepo() {
 
@@ -19,11 +18,10 @@ export default function ContainerFormRepo() {
     const [repositorios, setRepositorios] = useState([]);
     const [loading, setLoading] = useState(false);
     const [alert, setAlert] = useState(null);
-
-
+    const [showAlert, setShowAlert] = useState(false);
+    const [existe, setExiste] = useState(false)
     useEffect(() => {
         const repoStorage = localStorage.getItem('repos')
-
         if (repoStorage) {
             setRepositorios(JSON.parse(repoStorage))
         }
@@ -34,49 +32,21 @@ export default function ContainerFormRepo() {
     }, [repositorios])
 
 
-    const [showAlert, setShowAlert] = useState(false);
-
-
-    const handleClose = (_, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-
-        setShowAlert(false)
-    };
-
-    function Alert(props) {
-        return <MuiAlert elevation={6} variant="filled" {...props} />;
-    }
-
     const handleSubmit = useCallback((e) => {
         e.preventDefault()
-
         async function submit() {
             setLoading(true)
             setAlert(null)
             try {
-
                 if (newRepo === '') {
-
                     throw new Error('O campo não pode ser em branco')
                 }
-
                 const response = await api.get(`repos/${newRepo}`)
-
                 const hasRepo = repositorios.find(repo => repo.name === newRepo)
-
                 if (hasRepo) {
-
                     setShowAlert(true)
-                    throw new Error('O campo não pode ser em branco')
-
-
+                    throw new Error('Já existe')
                 }
-
-                console.log(response.data)
-
-
                 const data = {
                     name: response.data.full_name,
                 }
@@ -85,7 +55,9 @@ export default function ContainerFormRepo() {
             }
             catch (error) {
                 setAlert(true)
-                console.log(error)
+                setExiste(true)
+                console.log(setExiste)
+
             } finally {
                 setLoading(false);
             }
@@ -103,32 +75,20 @@ export default function ContainerFormRepo() {
         const find = repositorios.filter(r => r.name !== repo)
         setRepositorios(find)
     }, [repositorios])
-
-
-
-
-
-
     const styles = useStyles()
-
     return (
         <>
-
-
-
             <FormDefault className={styles.container}
                 onSubmit={handleSubmit}
                 error={alert}
                 contentForm={
                     <>
                         <InputRepo
-
                             type={'text'}
                             label={'Digite usuário/repositório'}
                             value={newRepo}
                             onChange={handleinputChange}
                         />
-
                         <ButtonDefault
                             color={'primary'}
                             type={'submit'}>
@@ -136,35 +96,22 @@ export default function ContainerFormRepo() {
                             {loading ? (
                                 <LoopOutlinedIcon />
                             ) : (<AddCircleOutlineIcon />)
-
                             }
                         </ButtonDefault>
                     </>
-
-
                 }
-
             />
-            <TipMessage
-            />
-            { showAlert &&
-
-                <Snackbar
-                    open={showAlert}
-                    autoHideDuration={26000}
-                    onClose={handleClose}
-                    className={styles.tip}
-                    anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'center'
-                    }}
-                >
-                    <Alert onClose={handleClose} severity="warning">
-                        Ja existe esse repo
-</Alert>
-                </Snackbar>
+            {showAlert ?
+                <DuplicatedMessage />
+                :
+                <TipMessage />
             }
 
+            {existe ?
+                <NotExistMessage />
+                :
+                ''
+            }
             <ListRepo className={styles.list}
                 itemList={
                     <>
@@ -178,14 +125,9 @@ export default function ContainerFormRepo() {
                                 />
                             ))
                         }
-
-
                     </>
                 }
-
             />
-
-
         </>
     )
 }
