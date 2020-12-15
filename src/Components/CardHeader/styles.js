@@ -4,14 +4,7 @@ const useStyles = makeStyles((theme) => ({
   list: {
     display: 'flex',
     flexDirection: "column",
-  }, 
-  root: {
-  },
-  gridList: {
-  },
-  icon: {
-  },
-  
+  }
   
 }));
 
