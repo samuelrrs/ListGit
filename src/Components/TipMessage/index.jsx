@@ -5,17 +5,16 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export default function TipMessage() {
+export default function TipMessage({corMessage, messageAlert}) {
   const [open, setOpen] = useState(true);
 
   const handleClose = (_, reason) => {
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
   };
-  
+
   return (
     <Snackbar
       open={open}
@@ -25,9 +24,9 @@ export default function TipMessage() {
         vertical: 'top',
         horizontal: 'center'
       }}>
-      <Alert onClose={handleClose} severity="info">
-        Dica : facebook/react-native
-        </Alert>
+      <Alert onClose={handleClose} severity={corMessage}>
+        {messageAlert}
+      </Alert>
     </Snackbar>
   );
 }

@@ -9,8 +9,6 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import useStyles from './styles';
 import LoopOutlinedIcon from '@material-ui/icons/LoopOutlined';
 import TipMessage from './../../Components/TipMessage/index';
-import DuplicatedMessage from './../../Components/DuplicatedMessage/index';
-import NotExistMessage from './../../Components/NotExistMessage/index';
 
 export default function ContainerFormRepo() {
 
@@ -19,7 +17,8 @@ export default function ContainerFormRepo() {
     const [loading, setLoading] = useState(false);
     const [alert, setAlert] = useState(null);
     const [showAlert, setShowAlert] = useState(false);
-    const [existe, setExiste] = useState(false)
+    const [existe, setNaoExiste] = useState(false)
+
     useEffect(() => {
         const repoStorage = localStorage.getItem('repos')
         if (repoStorage) {
@@ -55,9 +54,7 @@ export default function ContainerFormRepo() {
             }
             catch (error) {
                 setAlert(true)
-                setExiste(true)
-                console.log(setExiste)
-
+                setNaoExiste(true)
             } finally {
                 setLoading(false);
             }
@@ -102,16 +99,22 @@ export default function ContainerFormRepo() {
                 }
             />
             {showAlert ?
-                <DuplicatedMessage />
+                <TipMessage
+                    corMessage={'warning'}
+                    messageAlert={
+                        'Já existe esse repositório cadastrado !'
+                    }
+                />
                 :
-                <TipMessage />
+                <TipMessage
+                    corMessage={'info'}
+                    messageAlert={
+                        'Dica: facebook/react-native ...'
+                    }                    
+                />   
+                              
             }
 
-            {existe ?
-                <NotExistMessage />
-                :
-                ''
-            }
             <ListRepo className={styles.list}
                 itemList={
                     <>
