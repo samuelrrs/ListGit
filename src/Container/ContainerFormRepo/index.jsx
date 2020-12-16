@@ -110,9 +110,20 @@ export default function ContainerFormRepo() {
                     corMessage={'info'}
                     messageAlert={
                         'Dica: facebook/react-native ...'
-                    }                    
-                />   
-                              
+                    }
+                />
+
+            }
+            {
+                existe ?
+                    <TipMessage
+                        corMessage={'error'}
+                        messageAlert={
+                            'Repositório não existe ou é privado !'
+                        } />
+                    :
+                    ''
+                    
             }
 
             <ListRepo className={styles.list}
