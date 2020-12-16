@@ -10,26 +10,23 @@ import useStyles from './styles';
 import LoopOutlinedIcon from '@material-ui/icons/LoopOutlined';
 import TipMessage from './../../Components/TipMessage/index';
 
-export default function ContainerFormRepo() {
 
+export default function ContainerFormRepo() {
     const [newRepo, setNewRepo] = useState('');
     const [repositorios, setRepositorios] = useState([]);
     const [loading, setLoading] = useState(false);
     const [alert, setAlert] = useState(null);
     const [showAlert, setShowAlert] = useState(false);
-    const [existe, setNaoExiste] = useState(false)
-
+    const [naoExiste, setNaoExiste] = useState(false)
     useEffect(() => {
         const repoStorage = localStorage.getItem('repos')
         if (repoStorage) {
             setRepositorios(JSON.parse(repoStorage))
         }
     }, [])
-
     useEffect(() => {
         localStorage.setItem('repos', JSON.stringify(repositorios))
     }, [repositorios])
-
 
     const handleSubmit = useCallback((e) => {
         e.preventDefault()
@@ -42,8 +39,9 @@ export default function ContainerFormRepo() {
                 }
                 const response = await api.get(`repos/${newRepo}`)
                 const hasRepo = repositorios.find(repo => repo.name === newRepo)
+                console.log(hasRepo);
                 if (hasRepo) {
-                    setShowAlert(true)
+                    setShowAlert(true);
                     throw new Error('Já existe')
                 }
                 const data = {
@@ -51,19 +49,21 @@ export default function ContainerFormRepo() {
                 }
                 setRepositorios([...repositorios, data])
                 setNewRepo('')
-            }
-            catch (error) {
+            } catch (error) {
+                let e = error.toLocaleString();
+                if (!e.includes('Já existe')) {
+                    setNaoExiste(true)
+                }
                 setAlert(true)
-                setNaoExiste(true)
             } finally {
                 setLoading(false);
             }
         }
-
         submit();
+        setNaoExiste(false);
+        setShowAlert(false);
     },
         [newRepo, repositorios]);
-
     function handleinputChange(e) {
         setNewRepo(e.target.value)
         setAlert(null)
@@ -89,7 +89,6 @@ export default function ContainerFormRepo() {
                         <ButtonDefault
                             color={'primary'}
                             type={'submit'}>
-
                             {loading ? (
                                 <LoopOutlinedIcon />
                             ) : (<AddCircleOutlineIcon />)
@@ -102,30 +101,27 @@ export default function ContainerFormRepo() {
                 <TipMessage
                     corMessage={'warning'}
                     messageAlert={
-                        'Já existe esse repositório cadastrado !'
+                        'Já existe esse repositório cadastrado!'
                     }
                 />
                 :
                 <TipMessage
                     corMessage={'info'}
                     messageAlert={
-                        'Dica: facebook/react-native ...'
+                        'Dica: facebook/react-native...'
                     }
                 />
-
             }
             {
-                existe ?
+                naoExiste ?
                     <TipMessage
                         corMessage={'error'}
                         messageAlert={
-                            'Repositório não existe ou é privado !'
+                            'Repositório não existe ou é privado!'
                         } />
                     :
                     ''
-                    
             }
-
             <ListRepo className={styles.list}
                 itemList={
                     <>
@@ -134,7 +130,9 @@ export default function ContainerFormRepo() {
                                 <ItemList
                                     key={repo.name}
                                     name={repo.name}
-                                    onClickDelete={() => { handleDelete(repo.name) }}
+                                    onClickDelete={() => {
+                                        handleDelete(repo.name)
+                                    }}
                                     linkTo={`/repositorio/${encodeURIComponent(repo.name)}`}
                                 />
                             ))
