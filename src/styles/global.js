@@ -17,6 +17,7 @@ html, body #root {
 body {
     background: #8245BF;
     font-size: 14px;
+    max-width: 100%;
     -webkit-font-smoothing: antialiased !important;
 
 }

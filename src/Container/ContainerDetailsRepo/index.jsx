@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import LoadingTransition from './../../Components/LoadingTransition/index';
 import { Container } from '@material-ui/core';
 import useStyles from './styles';

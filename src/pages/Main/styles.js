@@ -20,7 +20,15 @@ const useStyles = makeStyles(() => ({
     marginRight: '10px',
     fontSize: '65px'
 
-  }
+  },
+  footer: {
+    padding: '1rem',
+    backgroundColor: 'black',
+    color: 'white',
+    position: 'fixed',
+    bottom: '0',
+    width: '100%',
+},
 }));
 
 

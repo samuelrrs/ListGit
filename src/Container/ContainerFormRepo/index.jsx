@@ -97,9 +97,11 @@ export default function ContainerFormRepo() {
                     </>
                 }
             />
+            
             {showAlert ?
                 <TipMessage
                     corMessage={'warning'}
+                    autoHideDuration={2000}
                     messageAlert={
                         'Já existe esse repositório cadastrado!'
                     }
@@ -107,6 +109,7 @@ export default function ContainerFormRepo() {
                 :
                 <TipMessage
                     corMessage={'info'}
+                    autoHideDuration={10000}
                     messageAlert={
                         'Dica: facebook/react-native...'
                     }
@@ -116,6 +119,7 @@ export default function ContainerFormRepo() {
                 naoExiste ?
                     <TipMessage
                         corMessage={'error'}
+                        autoHideDuration={2000}
                         messageAlert={
                             'Repositório não existe ou é privado!'
                         } />
