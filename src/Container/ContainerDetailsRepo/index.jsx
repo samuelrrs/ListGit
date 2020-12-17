@@ -11,6 +11,7 @@ import CardConteudo from './../../Components/CardContent/index';
 import Typography from '@material-ui/core/Typography';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import Button from '@material-ui/core/Button';
+import BackButton from './../../Components/BackButton/index';
 
 export default function ContainerDetailsRepo() {
     const pathname = window.location.pathname.replace('/repositorio', '')
@@ -37,13 +38,9 @@ export default function ContainerDetailsRepo() {
             </Container>
         )
     }
-
-
     return (
         <Container>
-            <Button variant="contained" href="/" className={styles.backButton}>
-                <ArrowBackIcon />
-            </Button>
+            <BackButton />
             <Container className={styles.cardPrincipal}>
                 <CardPrincipal
                     contentCard={
@@ -91,9 +88,7 @@ export default function ContainerDetailsRepo() {
                             />
                         </>
                     }
-
                 />
-
             </Container>
         </Container>
     )

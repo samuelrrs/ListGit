@@ -5,7 +5,7 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export default function TipMessage({corMessage, messageAlert}) {
+export default function TipMessage({corMessage, messageAlert, autoHideDuration}) {
   const [open, setOpen] = useState(true);
 
   const handleClose = (_, reason) => {
@@ -18,7 +18,7 @@ export default function TipMessage({corMessage, messageAlert}) {
   return (
     <Snackbar
       open={open}
-      autoHideDuration={26000}
+      autoHideDuration={autoHideDuration}
       onClose={handleClose}
       anchorOrigin={{
         vertical: 'top',
