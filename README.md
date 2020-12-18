@@ -38,6 +38,17 @@ Rodar o comando : yarn start ou npm run
 * [Yarn](https://yarnpkg.com/) - Gerente de Dependência
 * [Material UI](https://material-ui.com/pt/) - Biblioteca de design
 
+
+## 🛠 💻 Para acessar o projeto funcional :
+<p>
+
+[List Git](https://list-git-nova-tendencia.herokuapp.com/) 
+
+<p>
+
+(Devido ao próprio heroku, a primeira vez que você clicar no link ele pode não funcionar, aguarde alguns minutos e recarregue a página.)
+
+
 ## ✒️ Autores
 
 

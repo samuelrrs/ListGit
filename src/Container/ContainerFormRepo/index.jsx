@@ -15,7 +15,7 @@ export default function ContainerFormRepo() {
     const [newRepo, setNewRepo] = useState('');
     const [repositorios, setRepositorios] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [alert, setAlert] = useState(null);
+    const [alert, setAlert] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [naoExiste, setNaoExiste] = useState(false)
     useEffect(() => {
@@ -32,7 +32,7 @@ export default function ContainerFormRepo() {
         e.preventDefault()
         async function submit() {
             setLoading(true)
-            setAlert(null)
+            setAlert(false)
             try {
                 if (newRepo === '') {
                     throw new Error('O campo não pode ser em branco')
@@ -66,7 +66,7 @@ export default function ContainerFormRepo() {
         [newRepo, repositorios]);
     function handleinputChange(e) {
         setNewRepo(e.target.value)
-        setAlert(null)
+        setAlert(false)
     }
     const handleDelete = useCallback((repo) => {
         const find = repositorios.filter(r => r.name !== repo)
