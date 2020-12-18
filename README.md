@@ -42,7 +42,7 @@ Rodar o comando : yarn start ou npm run
 ## 🛠 💻 Para acessar o projeto funcional :
 <p>
 
-[List Git](https://list-git-nova-tendencia.herokuapp.com/) 
+Clique aqui > [List Git](https://list-git-nova-tendencia.herokuapp.com/) 
 
 <p>
 
